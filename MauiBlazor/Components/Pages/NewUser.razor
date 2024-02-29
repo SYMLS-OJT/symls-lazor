@@ -201,12 +201,12 @@
 
     toggleButton.addEventListener("click", function () {
         toggleLabel.classList.toggle("bg-blue-500");
-        toggleHandle.classList.toggle(" translate-x-full");
+        toggleHandle.classList.toggle("translate-x-full");
         var opacityValue = toggleButton.checked ? 1 : 0.5;
         var buttons = [minusButton, plusButton, minusButton1, plusButton1];
         buttons.forEach(function (button) {
             salesDiv.style.opacity = opacityValue;
-            button.disabled = !toggleButton.checked
+            button.disabled = !toggleButton.checked;
         });
 
     });
