@@ -1,0 +1,256 @@
+﻿@page "/newuser"
+
+<div
+    class="w-full relative bg-white-white overflow-hidden flex flex-col items-center justify-start py-[30px] pr-[57px] pl-5 gap-[64px_0px] tracking-[normal] lg:gap-[64px_0px] lg:pr-7 mq750:gap-[64px_0px]">
+    <section
+        class="w-[1103px] flex flex-col items-end justify-start gap-[33px_0px] max-w-full text-left text-[24px] text-black font-medium mq750:gap-[33px_0px]">
+        <div class="self-stretch flex flex-row items-center justify-between gap-[20px] mq450:flex-wrap">
+            <h3 class="m-0 relative text-inherit font-normal font-inherit mq450:text-[19px]">
+                New User
+            </h3>
+            <div class="h-[60px] w-[60px] rounded-[100px] bg-[#084e8a] cursor-pointer flex justify-center items-center"
+                id="image" onclick="openFileUploader()">
+                <input type="file" id="fileInput" style="display: none;" accept="image/*"
+                    onchange="previewImage(event)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path fill="white"
+                        d="M11 16V7.85l-2.6 2.6L7 9l5-5l5 5l-1.4 1.45l-2.6-2.6V16zm-7 4v-5h2v3h12v-3h2v5z" />
+                </svg>
+            </div>
+        </div>
+        <div class=" self-stretch flex flex-col items-start justify-start min-h-[336px] max-w-full text-base
+                text-darkslategray p-3 border box-border shadow-lg">
+            <div class="relative inline-block text-left mb-2">
+                <div>User Level</div>
+                <div id="userdiv"
+                    class="text-sm self-stretch h-12 rounded-md bg-white-white box-border flex flex-row items-center justify-start py-3 pl-[19px] gap-[0px_10px] w-[250px] border-[1px] border-solid border-stroke">
+                    <button type="button"
+                        class="z-10 inline-flex w-full justify-end gap-x-1.5 rounded-md bg-white px-2 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                        id="menu-button" aria-expanded="true" aria-haspopup="true" onclick="toggleMenu()">
+                        <span id="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+                                <path fill="black" d="m7 10l5 5l5-5z" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="absolute z-10 mt-2 w-56 hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="menu">
+                    <div class="py-1" role="none">
+                        <button class="text-gray-700 block px-4 py-2 text-sm" id="menu-item-0"
+                            onclick="accountSetting()">Account settings</button>
+                        <button class="text-gray-700 block px-4 py-2 text-sm" id="menu-item-1"
+                            onclick="closeMenu()">Support</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="self-stretch flex flex-col items-start justify-start max-w-full mb-2">
+                <div class="self-stretch flex flex-col items-start justify-start max-w-full">
+                    <div class="w-[250px] flex flex-row items-start justify-start">
+                        <div class="relative leading-[24px] font-medium">
+                            First Name
+                        </div>
+                    </div>
+                    <div
+                        class="self-stretch h-12 rounded-md bg-white-white box-border flex flex-row items-center justify-start gap-[0px_10px] max-w-full border-[1px] border-solid border-stroke">
+                        <input
+                            class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[250px] max-w-full"
+                            placeholder="" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch flex flex-col items-start justify-start max-w-full mb-2">
+                <div class="self-stretch flex flex-col items-start justify-start max-w-full">
+                    <div class="w-[250px] flex flex-row items-start justify-start">
+                        <div class="relative leading-[24px] font-medium">Last Name</div>
+                    </div>
+                    <div
+                        class="self-stretch h-12 rounded-md bg-white-white box-border flex flex-row items-center justify-start gap-[0px_10px] max-w-full border-[1px] border-solid border-stroke">
+                        <input
+                            class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[250px] max-w-full"
+                            placeholder="" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch flex flex-row flex-wrap items-start justify-center max-w-full">
+                <div class="flex-1 flex flex-col items-start justify-start min-w-[264px] max-w-full mr-2">
+                    <div class="self-stretch flex flex-col items-start justify-start">
+                        <div class="w-[250px] flex flex-row items-start justify-start">
+                            <div class="relative leading-[24px] font-medium">
+                                Phone Number
+                            </div>
+                        </div>
+                        <div
+                            class="self-stretch h-12 rounded-md bg-white-white box-border flex flex-row items-center justify-start border-[1px] border-solid border-stroke">
+                            <input
+                                class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[190px]"
+                                placeholder="" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col items-start justify-start min-w-[264px] max-w-full mr-2">
+                    <div class="self-stretch flex flex-col items-start justify-start">
+                        <div class="w-[250px] flex flex-row items-start justify-start">
+                            <div class="relative leading-[24px] font-medium">
+                                Email address
+                            </div>
+                        </div>
+                        <div
+                            class="self-stretch h-12 rounded-md bg-white-white box-border flex flex-row items-center justify-start gap-[0px_10px] border-[1px] border-solid border-stroke">
+                            <input
+                                class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[190px]"
+                                placeholder="" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col items-start justify-start min-w-[264px] max-w-full">
+                    <div class="self-stretch flex flex-col items-start justify-start">
+                        <div class="w-[250px] flex flex-row items-start justify-start">
+                            <div class="relative leading-[24px] font-medium">
+                                Direct Office Line (optional)
+                            </div>
+                        </div>
+                        <div
+                            class="self-stretch h-12 rounded-md bg-white-white box-border flex flex-row items-center justify-start gap-[0px_10px] border-[1px] border-solid border-stroke">
+                            <input
+                                class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[190px]"
+                                placeholder="" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="self-stretch flex flex-row items-start justify-start py-0 px-[7px] text-sm text-dark-dark">
+            <div class="flex flex-col items-start justify-start py-1.5 px-4">
+                <div class="flex flex-row flex-wrap items-center justify-start">
+                    <div class="flex flex-row flex-wrap items-center justify-start py-0 pr-1 pl-0 gap-[12px_4.89px]">
+                        <div class="relative leading-[22px] font-medium">is Doctor</div>
+                        <div class="inline-flex items-center">
+                            <input type="checkbox" class="hidden" id="toggleButton">
+                            <label for="toggleButton" class="relative inline-block w-10 h-5 transition-all duration-200 ease-in-out
+                        bg-gray-300 rounded-full cursor-pointer">
+                                <span
+                                    class="absolute left-0 inline-block w-5 h-5 transition-all duration-200 ease-in-out transform translate-x-0 bg-white rounded-full shadow-md"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch flex flex-row opacity-30" id="sales">
+                <div class="py-2 px-2">SMYLS Fee Add-On %</div>
+                <button class="px-2 py-2 border box-border" id="minusButton" disabled>-</button>
+                <div class="py-2 px-4 border box-border">10%</div>
+                <button class="px-2 py-2 border box-border mr-4" id="plusButton" disabled>+</button>
+
+                <div class="self-stretch flex-row py-2 px-2">SMYLS Fee Add-On %</div>
+                <button class="self-stretch flex-row px-2 py-2 border box-border" id="minusButton1" disabled>-</button>
+                <div class="self-stretch flex-row py-2 px-4 border box-border">10%</div>
+                <button class="self-stretch flex-row px-2 py-2 border box-border" id="plusButton1" disabled>+</button>
+            </div>
+        </div>
+    </section>
+    <section
+        class="w-[1103px] flex flex-row items-start justify-start max-w-full text-left text-base text-darkslategray font-medium border box-border shadow-lg p-3">
+        <div
+            class="flex-1 flex flex-row flex-wrap items-start justify-start py-0 pr-[9px] pl-0 gap-[0px_53px] max-w-full mq750:gap-[0px_53px]">
+            <div class="flex-1 flex flex-col items-start justify-start min-w-[336px] max-w-full mq750:min-w-full">
+                <div class="self-stretch flex flex-col items-start justify-start gap-[10px_0px] max-w-full">
+                    <div>Password</div>
+                    <div
+                        class="self-stretch h-12 rounded-md bg-white-white box-border items-center justify-start gap-[0px_10px] max-w-full border-[1px] border-solid border-stroke">
+                        <input
+                            class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[250px] max-w-full"
+                            placeholder="" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 flex flex-col items-start justify-start min-w-[336px] max-w-full mq750:min-w-full">
+                <div class="self-stretch flex flex-col items-start justify-start gap-[10px_0px] max-w-full">
+                    <div>Confirm Password</div>
+                    <div
+                        class="self-stretch h-12 rounded-md bg-white-white box-border items-center justify-start gap-[0px_10px] max-w-full border-[1px] border-solid border-stroke">
+                        <input
+                            class="w-full [border:none] [outline:none] bg-[transparent] h-full flex-1 flex flex-row items-center justify-start font-medium text-base text-black min-w-[250px] max-w-full"
+                            placeholder="" type="text" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        if (menu.style.display === "none" || menu.style.display === "") {
+            menu.style.display = "block";
+        } else {
+            menu.style.display = "none";
+        }
+
+    }
+    var toggleButton = document.getElementById("toggleButton");
+    var toggleLabel = document.querySelector("label[for='toggleButton']");
+    var toggleHandle = toggleLabel.querySelector("span");
+    var minusButton = document.getElementById("minusButton");
+    var plusButton = document.getElementById("plusButton");
+    var minusButton1 = document.getElementById("minusButton1");
+    var plusButton1 = document.getElementById("plusButton1");
+    var salesDiv = document.getElementById("sales");
+
+    toggleButton.addEventListener("click", function () {
+        toggleLabel.classList.toggle("bg-blue-500");
+        toggleHandle.classList.toggle(" translate-x-full");
+        var opacityValue = toggleButton.checked ? 1 : 0.5;
+        var buttons = [minusButton, plusButton, minusButton1, plusButton1];
+        buttons.forEach(function (button) {
+            salesDiv.style.opacity = opacityValue;
+            button.disabled = !toggleButton.checked
+        });
+
+    });
+
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("hidden");
+    }
+
+    function accountSetting() {
+        closeMenu();
+    }
+
+    function closeMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.add("hidden");
+    }
+
+    function userLevel() {
+    }
+
+    function openFileUploader() {
+        document.getElementById('fileInput').click();
+    }
+
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            const imageData = event.target.result;
+            const imageElement = document.createElement('img');
+            imageElement.src = imageData;
+            imageElement.style.width = '100%';
+            imageElement.style.height = '100%';
+            imageElement.style.objectFit = 'cover';
+
+            const imageDiv = document.getElementById('image');
+            // Clear existing content before appending the new image
+            imageDiv.innerHTML = '';
+            imageDiv.appendChild(imageElement);
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+</script>
