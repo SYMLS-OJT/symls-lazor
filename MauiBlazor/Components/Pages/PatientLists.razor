@@ -1,2 +1,71 @@
 @page "/patientlists"
+<div class="flex-1 flex flex-row items-start justify-between gap-[20px] max-w-full mq450:flex-wrap">
+    <div class="flex flex-col items-start justify-start gap-[48px_0px] mb-2">
+        <h1
+            class="m-0 relative text-[40px] font-normal font-body-medium-regular text-black text-left mq450:text-[24px] mq1050:text-[32px]">
+            Patient List
+        </h1>
+        <button
+            class="cursor-pointer [border:none] bg-button overflow-hidden flex flex-row items-center justify-center box-border hover:bg-steelblue">
+            <div class="rounded-sm bg-sky-100 relative text-xs border border-black p-2 font-bold">
+                All
+            </div>
+        </button>
+    </div>
+    <button class="cursor-pointer fle+x flex-row items-center justify-center ">
+        <div class="flex flex-row items-start justify-start text-xs bg-[#084e8a] text-white py-2 px-4 rounded-sm">
+            Add Patient
+        </div>
+    </button>
+</div>
+
+
+<div class="w-[100%] flex flex-row flex-wrap items-start justify-start [row-gap:20px] max-w-full mb-1">
+    <div class="w-[178px] flex flex-col items-start justify-start gap-[10px_0px]">
+        <div
+            class="self-stretch h-10 bg-white-white box-border flex flex-row items-center justify-start py-3 pr-[22px] pl-[18px] gap-[0px_10px] border-[1.5px] border-solid border-primary-color">
+            <div class="flex-1 flex flex-row items-center justify-between gap-[20px]">
+                <div
+                    class="relative text-5xs leading-[24px] font-body-medium-regular text-primary-text-color text-left">
+                    Filter
+                </div>
+                <button type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 40 40">
+                        <path fill="black" d="M4.659 11.833h30.682L20 32.167z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="w-[259px] flex flex-col items-start justify-start mr-5">
+        <div class="self-stretch flex flex-col items-start justify-start">
+            <div
+                class="self-stretch h-10 rounded-md bg-white-white box-border flex flex-row items-center justify-start py-3 pr-[17px] pl-[19px] gap-[0px_10px] border-[1px] border-solid border-stroke">
+                <div class="flex-1 flex flex-row items-center justify-between gap-[20px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6" />
+                    </svg> <input
+                        class="w-[200px] [border:none] [outline:none] bg-[transparent] h-6 flex flex-row items-center justify-start font-medium text-base text-black"
+                        placeholder="Search Patients" type="text" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row items-end justify-end box-border max-w-full">
+        <div class="h-10 flex flex-row items-end justify-end py-0 pl-px box-border text-xs">
+            <div
+                class="relative text-5xs leading-[24px] font-body-medium-regular text-gray-500 text-left border border-black py-2 px-2">
+                <button type="button"> Save Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flex flex-row items-end justify-end w-full">
+    <button class="bg-[#084e8a] text-center text-white w-20 text-[10px] rounded-sm py-1 font-medium" id="tableID"
+        onclick="downloadTableAsCSV()">Download</button>
+</div>
 <MauiBlazor.Components.Tables.PatientTable />
+<MauiBlazor.Components.Script.PatientListScript />

@@ -1,0 +1,56 @@
+<script>
+    function downloadTable() {
+        const table = document.querySelector('table');
+
+        let csv = '';
+
+        table.querySelectorAll('tr').forEach(row => {
+            row.querySelectorAll('th, td').forEach((cell, index) => {
+                csv += index === 0 ? '' : ',';
+                csv += `"${cell.innerText.trim().replace(/"/g, '""')}"`;
+            });
+            csv += '\n';
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+
+        a.download = 'table.csv';
+
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        closeMenu();
+        alert('Download');
+
+    }
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        if (menu.style.display === "none" || menu.style.display === "") {
+            menu.style.display = "block";
+        } else {
+            menu.style.display = "none";
+        }
+
+    }
+
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("hidden");
+    }
+
+    function accountSetting() {
+        closeMenu();
+    }
+
+    function closeMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.add("hidden");
+    }
+
+    //document.getElementById('tableID').addEventListener('click', downloadTable);
+
+</script>

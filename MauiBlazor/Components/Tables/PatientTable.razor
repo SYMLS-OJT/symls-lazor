@@ -1,587 +1,296 @@
-@* <div class="flex">
-<div class="w-full border border-black mr-1 flex items-center text-[30px]">Patients</div>
-<div class="w-full border border-black grid justify-items-end text-white text-sm">
-<button type="button" class="bg-[#007ace]">Add
-Patient
-</button>
-</div>
-</div> *@
-
-
-<div class="flex-1 flex flex-row items-start justify-between gap-[20px] max-w-full mq450:flex-wrap">
-    <div class="flex flex-col items-start justify-start gap-[48px_0px] mb-2">
-        <h1
-            class="m-0 relative text-[40px] font-normal font-body-medium-regular text-black text-left mq450:text-[24px] mq1050:text-[32px]">
-            Patient List
-        </h1>
-        <button
-            class="cursor-pointer [border:none] bg-button overflow-hidden flex flex-row items-center justify-center box-border hover:bg-steelblue">
-            <div class="rounded-sm bg-sky-100 relative text-xs border border-black p-2 font-bold">
-                All
-            </div>
-        </button>
-    </div>
-    <div class="flex flex-col items-start justify-start text-xs bg-[#084e8a] text-white py-2 px-4 rounded-sm ">
-        <button
-            class="cursor-pointer [border:none] bg-button overflow-hidden flex flex-row items-center justify-center whitespace-nowrap hover:bg-steelblue">
-            <div class="relative text-whitesmoke text-left">
-                Add Patient
-            </div>
-        </button>
-    </div>
-</div>
-
-<div class="w-[100%] flex flex-row flex-wrap items-start justify-start [row-gap:20px] max-w-full">
-    <div class="w-[178px] flex flex-col items-start justify-start gap-[10px_0px]">
-        <div
-            class="self-stretch h-10 bg-white-white box-border flex flex-row items-center justify-start py-3 pr-[22px] pl-[18px] gap-[0px_10px] border-[1.5px] border-solid border-primary-color">
-            <div class="flex-1 flex flex-row items-center justify-between gap-[20px]">
-                <div
-                    class="relative text-5xs leading-[24px] font-body-medium-regular text-primary-text-color text-left">
-                    Filter
+<table class="table-fixed w-[100%] mt-2">
+    <thead>
+        <tr>
+            <th scope="col" class="border box-border w-20">
+                <div class="flex justify-center items-center">
+                    <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
                 </div>
-                <button type="button">
+            </th>
+            <th scope="col" class="flex justify-center items-center border box-border">
+                <div class="w-full">
+                    PATIENT
+                </div>
+                <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 40 40">
                         <path fill="black" d="M4.659 11.833h30.682L20 32.167z" />
                     </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="w-[259px] flex flex-col items-start justify-start">
-        <div class="self-stretch flex flex-col items-start justify-start">
-            <div
-                class="self-stretch h-10 rounded-md bg-white-white box-border flex flex-row items-center justify-start py-3 pr-[17px] pl-[19px] gap-[0px_10px] border-[1px] border-solid border-stroke">
-                <div class="flex-1 flex flex-row items-center justify-between gap-[20px]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                        <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6" />
-                    </svg> <input
-                        class="w-[214px] [border:none] [outline:none] bg-[transparent] h-6 flex flex-row items-center justify-start font-medium text-base text-black"
-                        placeholder="Search Patients" type="text" />
-
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="flex-1 flex flex-row items-center justify-end py-0 px-2.5 box-border min-w-[51px] max-w-full">
-        <div class="h-10 flex flex-row items-center justify-end py-0 pr-0.5 pl-px box-border text-xs">
-            <div
-                class="relative text-5xs leading-[24px] font-body-medium-regular text-gray-500 text-left border border-black py-2 px-2">
-                <button type="button"> Save Search</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="relative overflow-x shadow-md sm:rounded-lg mt-[20px]">
-    <table class="w-[100%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 font-bold">
-            <tr>
-                <th scope="col" class="px-6 border box-border">
-                    <div class="flex items-center">
-                        <input id="checkbox-all-search" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                    </div>
-                </th>
-                <th scope="col" class="px-6 border box-border">
-                    <div class="flex">
-                        <div class="w-full">
-                            PATIENT
-                        </div>
-                        <div>
-                            <button type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 40 40">
-                                    <path fill="black" d="M4.659 11.833h30.682L20 32.167z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </th>
-                <th scope="col" class="px-6 py-2 border box-border ">
+            </th>
+            <th scope="col" class="border box-border">
+                <div class="flex justify-center items-center">
                     ADDRESS
-                </th>
-                <th scope="col" class="px-6 py-2 border box-border">
+                </div>
+            </th>
+            <th scope="col" class="border box-border">
+                <div class="flex justify-center items-center">
                     PHONE
-                </th>
-                <th scope="col" class="px-6 py-2 border box-border">
+                </div>
+            </th>
+            <th scope="col" class="border box-border">
+                <div class="flex justify-center items-center">
                     EMAIL
-                </th>
-                <th scope="col" class="px-6 py-2 border box-border">
-                    <div class="flex">
-                        <div class="w-full">
-                            STATUS
-                        </div>
+                </div>
+            </th>
+            <th class=" flex justify-center items-center border box-border">
+                <div class="w-full">
+                    Status
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 40 40">
+                        <path fill="black" d="M4.659 11.833h30.682L20 32.167z" />
+                    </svg>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="border box-border">
+                <div class="flex justify-center items-center">
+                    <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                </div>
+            </td>
+            <td class="border box-border">
+                <div class="flex flex-row justify-center items-center ">
+                    <NavLink class="mr-1 text-sm" href="patientdetails">
+                        Apple MacBook Pro 17
+                    </NavLink>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
+                        <path fill="#007ace" d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0
+239.8 47.8
+192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0
+310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7
+44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1
+1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7
+26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
+                    </svg>
+                </div>
+            </td>
+            <td class="text-center text-sm border box-border">
+                31 francine drive, north york
+            </td>
+            <td class="text-center text-sm border box-border">
+                (639) 182-2133
+            </td>
+
+            <td class="text-center text-sm border box-border">
+                nethel@gmail.com
+            </td>
+            <td class="border box-border p-2">
+                <div class="flex flex-row justify-center">
+                    <button class="bg-[#084e8a] text-xs text-white rounded-sm text-center px-3 py-1 mr-1">
                         <div>
-                            <button type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 40 40">
-                                    <path fill="black" d="M4.659 11.833h30.682L20 32.167z" />
-                                </svg>
-                            </button>
+                            Create Invoice
                         </div>
-                    </div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+                    </button>
+                    <button class="bg-red-400 text-xs text-white rounded-sm text-center px-3 py-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            OCT-1-2024
                         </div>
-                    </div>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border box-border">
+                <div class="flex justify-center items-center">
+                    <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                </div>
+            </td>
+            <td class="border box-border">
+                <div class="flex flex-row justify-center items-center ">
+                    <NavLink class="mr-1 text-sm" href="patientdetails">
+                        Apple MacBook Pro 17
+                    </NavLink>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
+                        <path fill="#007ace" d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0
+239.8 47.8
+192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0
+310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7
+44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1
+1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7
+26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
+                    </svg>
+                </div>
+            </td>
+            <td class="text-center text-sm border box-border">
+                31 francine drive, north york
+            </td>
+            <td class="text-center text-sm border box-border">
+                (639) 182-2133
+            </td>
 
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+            <td class="text-center text-sm border box-border">
+                nethel@gmail.com
+            </td>
+            <td class="border box-border p-2">
+                <div class="flex flex-row justify-center">
+                    <button class="bg-[#084e8a] text-xs text-white rounded-sm text-center px-3 py-1 mr-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            Create Invoice
                         </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+                    </button>
+                    <button class="bg-red-400 text-xs text-white rounded-sm text-center px-3 py-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            OCT-1-2024
                         </div>
-                    </div>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border box-border">
+                <div class="flex justify-center items-center">
+                    <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                </div>
+            </td>
+            <td class="border box-border">
+                <div class="flex flex-row justify-center items-center ">
+                    <NavLink class="mr-1 text-sm" href="patientdetails">
+                        Apple MacBook Pro 17
+                    </NavLink>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
+                        <path fill="#007ace" d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0
+239.8 47.8
+192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0
+310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7
+44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1
+1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7
+26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
+                    </svg>
+                </div>
+            </td>
+            <td class="text-center text-sm border box-border">
+                31 francine drive, north york
+            </td>
+            <td class="text-center text-sm border box-border">
+                (639) 182-2133
+            </td>
 
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+            <td class="text-center text-sm border box-border">
+                nethel@gmail.com
+            </td>
+            <td class="border box-border p-2">
+                <div class="flex flex-row justify-center">
+                    <button class="bg-[#084e8a] text-xs text-white rounded-sm text-center px-3 py-1 mr-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            Create Invoice
                         </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+                    </button>
+                    <button class="bg-red-400 text-xs text-white rounded-sm text-center px-3 py-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            OCT-1-2024
                         </div>
-                    </div>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border box-border">
+                <div class="flex justify-center items-center">
+                    <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                </div>
+            </td>
+            <td class="border box-border">
+                <div class="flex flex-row justify-center items-center ">
+                    <NavLink class="mr-1 text-sm" href="patientdetails">
+                        Apple MacBook Pro 17
+                    </NavLink>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
+                        <path fill="#007ace" d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0
+239.8 47.8
+192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0
+310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7
+44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1
+1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7
+26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
+                    </svg>
+                </div>
+            </td>
+            <td class="text-center text-sm border box-border">
+                31 francine drive, north york
+            </td>
+            <td class="text-center text-sm border box-border">
+                (639) 182-2133
+            </td>
 
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+            <td class="text-center text-sm border box-border">
+                nethel@gmail.com
+            </td>
+            <td class="border box-border p-2">
+                <div class="flex flex-row justify-center">
+                    <button class="bg-[#084e8a] text-xs text-white rounded-sm text-center px-3 py-1 mr-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            Create Invoice
                         </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+                    </button>
+                    <button class="bg-red-400 text-xs text-white rounded-sm text-center px-3 py-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            OCT-1-2024
                         </div>
-                    </div>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border box-border">
+                <div class="flex justify-center items-center">
+                    <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                </div>
+            </td>
+            <td class="border box-border">
+                <div class="flex flex-row justify-center items-center ">
+                    <NavLink class="mr-1 text-sm" href="patientdetails">
+                        Apple MacBook Pro 17
+                    </NavLink>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
+                        <path fill="#007ace" d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0
+239.8 47.8
+192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0
+310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7
+44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1
+1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7
+26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
+                    </svg>
+                </div>
+            </td>
+            <td class="text-center text-sm border box-border">
+                31 francine drive, north york
+            </td>
+            <td class="text-center text-sm border box-border">
+                (639) 182-2133
+            </td>
 
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+            <td class="text-center text-sm border box-border">
+                nethel@gmail.com
+            </td>
+            <td class="border box-border p-2">
+                <div class="flex flex-row justify-center">
+                    <button class="bg-[#084e8a] text-xs text-white rounded-sm text-center px-3 py-1 mr-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            Create Invoice
                         </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
+                    </button>
+                    <button class="bg-red-400 text-xs text-white rounded-sm text-center px-3 py-1">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
+                            OCT-1-2024
                         </div>
-                    </div>
+                    </button>
+                </div>
+            </td>
+        </tr>
 
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
-                        </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
-                        </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 pl-6 borderd box-black">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row"
-                    class="font-medium text-slate-600 whitespace-nowrap dark:text-white border border-black">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="w-full">
-                            <NavLink class="nav-link text-current" href="patientdetails"> Apple MacBook Pro 17</NavLink>
-                        </div>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1em" viewBox="0 0 640 512">
-                                <path fill="#007ace"
-                                    d="M144 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160a80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7c0 11.8-9.6 21.3-21.3 21.3zM224 224a96 96 0 1 1 192 0a96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.4c73.6 0 133.3 59.7 133.3 133.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7" />
-                            </svg>
-                        </div>
-                    </div>
-
-                </th>
-                <td class="px-6 border box-black text-slate-600">
-                    31 Francince Drive, North York AB
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    (639) 182-7399
-                </td>
-                <td class="px-6 border box-black text-slate-600">
-                    nethel@teravault.co
-                </td>
-                <td class="px-6 py-2 flex text-white">
-                    <button type="button" class="text-[10px] mr-1 bg-[#084e8a] rounded-sm px-4">Create Invoice</button>
-                    <button type="button" class="text-[10px] bg-red-500 rounded-sm px-4">01-OCT-21</button>
-                </td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</div>
+    </tbody>
+</table>
